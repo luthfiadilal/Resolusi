@@ -60,6 +60,8 @@
         </div>
     </div>
     <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzMZUkGfEGdDH3z7zKZVCAFw7NG0quGE08mHU2M95HSHpmprxXfnjscGlWhxKIATDaW/exec'
+        const form = document.forms['submit-to-google-sheet']
         const bar = document.getElementsByClassName("bar");
         const menu = document.getElementsByClassName("menu");
         document.getElementsByClassName("toggler-navbar")[0].addEventListener("click", toogleClass);
@@ -69,20 +71,18 @@
             document.getElementsByClassName("sidebar")[0].classList.toggle('open')
         }
 
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzMZUkGfEGdDH3z7zKZVCAFw7NG0quGE08mHU2M95HSHpmprxXfnjscGlWhxKIATDaW/exec'
-        const form = document.forms['submit-to-google-sheet']
         
-            form.addEventListener('submit', e => {
-                e.preventDefault()
+        form.addEventListener('submit', e => {
+            e.preventDefault()
 
-                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                    .then(response => {
-                        alert('succes');
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    alert('succes');
 
-                        form.reset();
-                        console.log('Success!', response)})
-                    .catch(error => console.error('Error!', error.message))
-            })
+                    form.reset();
+                    console.log('Success!', response)})
+                .catch(error => console.error('Error!', error.message))
+        })
 
 
         
