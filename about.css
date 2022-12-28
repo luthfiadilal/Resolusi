@@ -177,7 +177,6 @@ nav ul li a:hover {
         margin: 0;
         padding: 0;
         padding: 16px;
-
         position: relative;
         left: 20px;
     }
@@ -185,7 +184,7 @@ nav ul li a:hover {
         margin-right: 15px;
     }
     .sidebar {
-        margin-left: 200px;
+        margin-left: 160px;
         position: fixed;
         top: 80px;
         left: 0;
