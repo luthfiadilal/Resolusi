@@ -16,7 +16,7 @@ body {
 .cover {
     height: 100vh;
     width: 100%;
-    background-image: linear-gradient(to right bottom, #a80fde, #435cf0, #0074e4, #0080c6, #0084a3);
+    background-image: linear-gradient(to right bottom, #a80fde, #744fea, #3968e8, #0077db, #0080c6, #0089c3, #0092bf, #1999b9, #27a9ca, #33b9db, #3ecaec, #49dbfd);
 }
 
 nav {
@@ -136,7 +136,7 @@ nav ul li a:hover {
     .cover {
         width: 100%;
         height: 1000px;
-        background-image: linear-gradient(to right bottom, #a80fde, #435cf0, #0074e4, #0080c6, #0084a3);
+        background-image: linear-gradient(to right bottom, #a80fde, #744fea, #3968e8, #0077db, #0080c6, #0089c3, #0092bf, #1999b9, #27a9ca, #33b9db, #3ecaec, #49dbfd);
     }
     .content {
         max-width: 100%;
