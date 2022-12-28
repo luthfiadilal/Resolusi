@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,7 +51,7 @@
                     <input type="text" name="nama">
                 </div>
                 <div class="form">
-                    <label class="pesan" for="message">Message</label>
+                    <label class="pesan" for="message">Resolusi</label>
                     <textarea name="message" id="" cols="30" rows="10" ></textarea>
                 </div>
                 <button type="submit">Submit</button>
@@ -62,10 +62,7 @@
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbzMZUkGfEGdDH3z7zKZVCAFw7NG0quGE08mHU2M95HSHpmprxXfnjscGlWhxKIATDaW/exec'
         const form = document.forms['submit-to-google-sheet']
-        const bar = document.getElementsByClassName("bar");
-        const menu = document.getElementsByClassName("menu");
 
-        
         form.addEventListener('submit', e => {
             e.preventDefault()
 
