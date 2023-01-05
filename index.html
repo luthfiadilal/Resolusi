@@ -1,92 +1,92 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
     <title>Resolusi</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="cover">
-        <nav>
-            
-            <h1>Resolusi</h1>
-            <ul class="bar">
-                <li><a target="_blank" href="index.html">Home</a></li>
-                <li><a target="_blank" href="about.html">About</a></li>
-                <li><a target="_blank" href="contact.html">Contact</a></li>
-            </ul>
-            <div class="navbar">
-                <a class="toggler-navbar">
-                    <div class="hamburger-menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </a>
+      <nav>
+        <h1>Resolusi</h1>
+        <ul class="bar">
+          <li><a target="_blank" href="index.html">Home</a></li>
+          <li><a target="_blank" href="about.html">About</a></li>
+          <li><a target="_blank" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="navbar">
+          <a class="toggler-navbar">
+            <div class="hamburger-menu">
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
-            <div class="sidebar">
-                <ul class="menu">
-                    <li class="active"><a target="_blank" href="index.html">Home</a></li>
-                    <li><a target="_blank" href="about.html">About</a></li>
-                    <li><a target="_blank" href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-    
-
-        <div class="content">
-            <div class="caption">
-                <h2>Resolusi</h2>
-                <p>resolusi adalah suatu janji pada diri sendiri atau keputusan untuk melakukan sesuatu, terutama untuk memperbaiki perilaku atau gaya hidup seseorang di tahun mendatang.
-
-                    Memang, resolusi juga diungkapkan oleh pernyataan serta keputusan individu mengenai pencapaian tertentu yang akan dibuat. Setiap orang dapat mengambil keputusan sesuai dengan cita-cita atau harapannya.</p>
-            </div>
-            
-            <form name="submit-to-google-sheet" class="form-box">
-                <h1 class="judul">Your Resolusi</h1>
-                <div class="form">
-                    <label class="nama" for="nama">Nama</label>
-                    <input type="text" name="nama">
-                </div>
-                <div class="form">
-                    <label class="pesan" for="message">Resolusi</label>
-                    <textarea name="message" id="" cols="30" rows="10" ></textarea>
-                </div>
-                <button type="submit">Submit</button>
-
-            </form>
+          </a>
         </div>
+        <div class="sidebar">
+          <ul class="menu">
+            <li class="active"><a target="_blank" href="index.html">Home</a></li>
+            <li><a target="_blank" href="about.html">About</a></li>
+            <li><a target="_blank" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="content">
+        <div class="caption">
+          <h2>Resolusi</h2>
+          <p>
+            resolusi adalah suatu janji pada diri sendiri atau keputusan untuk melakukan sesuatu, terutama untuk memperbaiki perilaku atau gaya hidup seseorang di tahun mendatang. Memang, resolusi juga diungkapkan oleh pernyataan serta
+            keputusan individu mengenai pencapaian tertentu yang akan dibuat. Setiap orang dapat mengambil keputusan sesuai dengan cita-cita atau harapannya.
+          </p>
+        </div>
+
+        <form name="submit-to-google-sheet" class="form-box">
+          <h1 class="judul">Your Resolusi</h1>
+          <div class="form">
+            <label class="nama" for="nama">Nama</label>
+            <input type="text" name="nama" placeholder="isi nama anda" />
+          </div>
+          <div class="form">
+            <label class="pesan" for="message">Resolusi</label>
+            <textarea name="message" id="" placeholder="Apa resolusi anda" cols="30" rows="10"></textarea>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </div>
+    <div id="loaders"></div>
+
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzMZUkGfEGdDH3z7zKZVCAFw7NG0quGE08mHU2M95HSHpmprxXfnjscGlWhxKIATDaW/exec'
-        const form = document.forms['submit-to-google-sheet']
+      const scriptURL = "https://script.google.com/macros/s/AKfycbzMZUkGfEGdDH3z7zKZVCAFw7NG0quGE08mHU2M95HSHpmprxXfnjscGlWhxKIATDaW/exec";
+      const form = document.forms["submit-to-google-sheet"];
+      const loaders = document.getElementById("loaders");
+      const cover = document.getElementsByClassName("cover");
 
-        form.addEventListener('submit', e => {
-            e.preventDefault()
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        loaders.style.display = "block";
+        cover[0].style.filter = "blur(20px)";
 
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => {
-                    alert('Terimakasih resolusi anda telah terkirim');
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            loaders.style.display = "none";
+            cover[0].style.filter = "none";
+            //alert("Terimakasih resolusi anda telah terkirim");
+            form.reset();
+            console.log("Success!", response);
+          })
+          .catch((error) => console.error("Error!", error.message));
+      });
 
-                    form.reset();
-                    console.log('Success!', response)})
-                .catch(error => console.error('Error!', error.message))
-        })
-        
-        document.getElementsByClassName("toggler-navbar")[0].addEventListener("click", toogleClass);
-        
-        function toogleClass() {
-            document.getElementsByClassName("hamburger-menu")[0].classList.toggle('open')
-            document.getElementsByClassName("sidebar")[0].classList.toggle('open')
-        }
+      document.getElementsByClassName("toggler-navbar")[0].addEventListener("click", toogleClass);
 
-        
-
-
-        
-        
+      function toogleClass() {
+        document.getElementsByClassName("hamburger-menu")[0].classList.toggle("open");
+        document.getElementsByClassName("sidebar")[0].classList.toggle("open");
+      }
     </script>
-</body>
+  </body>
 </html>
